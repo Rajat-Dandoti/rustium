@@ -1,0 +1,13 @@
+
+[package]
+name = "rustium"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cargo = "=0.79.0"
+thirtyfour = "0.32.0"  # Thirtyfour is a popular Selenium crate for Rust
+tokio = { version = "1.37.0", features = ["full"] }
+reqwest = { version = "0.12.4", features = ["json"] }
+serde = { version = "1.0.202", features = ["derive"] }
+tera = "1.19.1"  # for templating reports
