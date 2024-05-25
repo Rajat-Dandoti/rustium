@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
@@ -25,7 +25,7 @@ jobs:
         npm install -g axe-cli wrk
     
     - name: Run functional tests
-      run: cargo test --test src/tests/functional_tests.rs
+      run: cargo test --test functional_tests.rs
     
     - name: Run performance tests
       run: cargo test --test performance_tests
