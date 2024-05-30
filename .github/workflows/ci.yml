@@ -1,4 +1,4 @@
-name: CI
+name: Rustium CI
 
 on: push
 
@@ -19,6 +19,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16'
+
+    - name: Make setup script executable
+      run: chmod +x scripts/setup.sh
 
     - name: Run setup script
       run: ./scripts/setup.sh
