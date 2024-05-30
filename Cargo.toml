@@ -5,6 +5,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+async-std = "1.10"
+webdriver = "0.40"
+anyhow = "1.0"
+chromedriver-manager = "0.3.4"
 cargo = "0.79.0"
 thirtyfour = "0.32.0"  # Thirtyfour is a popular Selenium crate for Rust
 tokio = { version = "1.37.0", features = ["full"] }

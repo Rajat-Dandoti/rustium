@@ -1,0 +1,1 @@
+pub const EXAMPLE_LOCATOR: &str = "example_locator_selector";

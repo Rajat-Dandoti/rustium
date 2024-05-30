@@ -5,39 +5,26 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
-        profile: minimal
         override: true
-    
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y nikto
-        curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-        sudo apt-get install -y nodejs
-        npm install -g axe-cli wrk
-    
-    - name: Run functional tests
-      run: cargo test --test functional_tests.rs
-    
-    - name: Run performance tests
-      run: cargo test --test performance_tests
-    
-    - name: Run security tests
-      run: cargo test --test security_tests
-    
-    - name: Run accessibility tests
-      run: cargo test --test accessibility_tests
-    
-    - name: Upload Reports
-      uses: actions/upload-artifact@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
       with:
-        name: test-reports
-        path: reports/
+        node-version: '16'
+
+    - name: Run setup script
+      run: ./scripts/setup.sh
+
+    - name: Build
+      run: cargo build --release
+
+    - name: Run Tests
+      run: ./scripts/run_tests.sh
